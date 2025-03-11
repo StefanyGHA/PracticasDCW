@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>My page</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="logo">Clothing Store</div>
+        <div class="cart">
+            <button onclick="toggleCart()">Carrito (<span id="cart-count">0</span>)</button>
+        </div> 
+    </header>
+    <!-- Productos -->
+    <main>
+        <section class="products">
+            <h2>Productos</h2>
+            <div class="product" data-id="1">
+                <img src="img/dress.jpg" alt="Vestido Elegante">
+                <h3>Vestido</h3>
+                <p>$35</p>
+                <button class="add-to-cart" onclick="addToCart(1, 'Vestido Elegante', 50)">Añadir al Carrito</button>
+            </div>
+            <div class="product" data-id="2">
+                <img src="img/jean.jpg" alt="Jeans Modernos">
+                <h3>Jeans</h3>
+                <p>$30</p>
+                <button class="add-to-cart" onclick="addToCart(2, 'Jeans Modernos', 40)">Añadir al Carrito</button>
+            </div>
+            <div class="product" data-id="3">
+                <img src="img/camisa.jpg" alt="Camisa Casual">
+                <h3>Blusa</h3>
+                <p>$15</p>
+                <button class="add-to-cart" onclick="addToCart(3, 'Camisa Casual', 30)">Añadir al Carrito</button>
+            </div>
+            <div class="product" data-id="4">
+                <img src="img/acce.jpg" alt="Accesorio">
+                <h3>Aretes</h3>
+                <p>$15</p>
+                <button class="add-to-cart" onclick="addToCart(4, 'Accesorio', 15)">Añadir al Carrito</button>
+            </div>
+            <div class="product" data-id="5">
+                <img src="img/glosses.jpg" alt="Maquillaje">
+                <h3>Gloss</h3>
+                <p>$5</p>
+                <button class="add-to-cart" onclick="addToCart(5, 'Maquillaje', 20)">Añadir al Carrito</button>
+            </div>
+            <div class="product" data-id="6">
+                <img src="img/falda.jpg" alt="Maquillaje">
+                <h3>Falda</h3>
+                <p>$25</p>
+                <button class="add-to-cart" onclick="addToCart(5, 'Maquillaje', 20)">Añadir al Carrito</button>
+            </div>
+        </section>
+        <section class="products">
+            <h2>Productos</h2>
+            <div class="product" data-id="7">
+                <img src="img/bolso.jpg" alt="Maquillaje">
+                <h3>Bolso</h3>
+                <p>$70</p>
+                <button class="add-to-cart" onclick="addToCart(5, 'Maquillaje', 20)">Añadir al Carrito</button>
+            </div>
+            <div class="product" data-id="8">
+                <img src="img/collar.jpg" alt="Maquillaje">
+                <h3>Collar</h3>
+                <p>$10</p>
+                <button class="add-to-cart" onclick="addToCart(5, 'Maquillaje', 20)">Añadir al Carrito</button>
+            </div>
+            <div class="product" data-id="9">
+                <img src="img/tacos.jpg" alt="Maquillaje">
+                <h3>Tacones Rojos</h3>
+                <p>$80</p>
+                <button class="add-to-cart" onclick="addToCart(5, 'Maquillaje', 20)">Añadir al Carrito</button>
+            </div>
+            <div class="product" data-id="10">
+                <img src="img/conjunto.jpg" alt="Maquillaje">
+                <h3>Conjunto</h3>
+                <p>$40</p>
+                <button class="add-to-cart" onclick="addToCart(5, 'Maquillaje', 20)">Añadir al Carrito</button>
+            </div>
+            <div class="product" data-id="11">
+                <img src="img/pulsera.jpg" alt="Maquillaje">
+                <h3>Pulsera</h3>
+                <p>$15</p>
+                <button class="add-to-cart" onclick="addToCart(5, 'Maquillaje', 20)">Añadir al Carrito</button>
+            </div>
+            <div class="product" data-id="12">
+                <img src="img/tacos2.jpg" alt="Maquillaje">
+                <h3>Tacones Rosa</h3>
+                <p>$50</p>
+                <button class="add-to-cart" onclick="addToCart(5, 'Maquillaje', 20)">Añadir al Carrito</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Carrito -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-modal-content">
+            <h3>Carrito de Compras</h3>
+            <ul id="cart-items">
+                <!-- Aquí se llenarán los productos del carrito -->
+            </ul>
+            <p id="total-price">Total: $0</p>
+            <button onclick="toggleCart()">Cerrar</button>
+            <button onclick="proceedToCheckout()">Finalizar Compra</button>
+        </div>
+    </div>
+
+    <!-- Formulario de Pago -->
+    <div id="checkout-modal" class="checkout-modal">
+        <div class="checkout-modal-content">
+            <h3>Formulario de Pago</h3>
+            <form id="checkout-form">
+                <label for="name">Nombre Completo</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="address">Dirección</label>
+                <input type="text" id="address" name="address" required>
+                
+                <label for="card-number">Número de Tarjeta</label>
+                <input type="text" id="card-number" name="card-number" required>
+                
+                <label for="expiry">Fecha de Expiración</label>
+                <input type="month" id="expiry" name="expiry" required>
+                
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" required>
+
+                <button type="submit">Pagar</button>
+            </form>
+            <button onclick="closeCheckout()">Cerrar</button>
+        </div>
+    </div>
+    <section id="contact">
+        <h2>Contacto</h2>
+        <p>Puedes contactarnos a través del correo electrónico: <a href="mailto:arguetafan@gmail.com">arguetafan@gmail.com</a></p>
+        <p>Puedes contactarnos por nuestro numero telefonico 6565-6565</p>
+    </section>
+    <footer>
+        <p>&copy; 2024 Clothing Store. Todos los derechos reservados.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
